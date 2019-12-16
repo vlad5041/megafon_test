@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Card, CardTitle, CardText, CardActions, Button, Grid, Cell} from 'react-mdl';
 import DataSet from '../../data.json';
-import Searchbar from "../utils/SearchBar";
+import SearchBar from "../utils/SearchBar";
 
 class Authors extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Authors extends Component {
         return (
             <div>
                 <h1>Авторы</h1>
-                <Searchbar
+                <SearchBar
                     term={this.state.term}
                     data={DataSet}
                     update={this.updateData.bind(this)}
@@ -29,8 +29,8 @@ class Authors extends Component {
                 <Grid className="cards">
                     {this.state.data.map(book =>(
                         <Cell col={6} phone={4} tablet={4}>
-                            <Card className={`book book-${book.id}`} shadow={0} style={{width: '320px', height: '320px', margin: 'auto'}}>
-                                <CardTitle expand style={{color: '#fff', background: '#46B6AC'}}>{book.name}</CardTitle>
+                            <Card className={`book book-${book.id}`} shadow={0}>
+                                <CardTitle expand>{book.name}</CardTitle>
                                 <CardText>
                                     {book.author} <br/>
                                     Рейтинг: {book.rating}
