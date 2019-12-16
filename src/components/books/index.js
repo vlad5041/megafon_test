@@ -24,7 +24,7 @@ class Books extends Component {
                 <SortBar initialData={DataSet} data={this.state.data} update={this.updateData.bind(this)} />
                 <Grid className="cards">
                     {this.state.data.map(book =>(
-                        <Cell col={6} phone={4} tablet={4}>
+                        <Cell key={book.id} col={6} phone={4} tablet={4}>
                             <Card className={`book book-${book.id}`} shadow={0} style={{width: '320px', height: '320px', margin: 'auto'}}>
                                 <CardTitle expand style={{color: '#fff', background: '#46B6AC'}}>{book.name}</CardTitle>
                                 <CardText>
@@ -39,7 +39,7 @@ class Books extends Component {
                                 </CardActions>
                             </Card>
                         </Cell>
-                    ))};
+                    ))}
                 </Grid>
             </div>
         );
