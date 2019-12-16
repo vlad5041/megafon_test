@@ -62,3 +62,18 @@
     transform: rotate(360deg);
   }
 }
+
+/*styles for book's cards*/
+.cards {
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -webkit-flex;
+
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+}
