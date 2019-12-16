@@ -25,15 +25,15 @@ class Books extends Component {
                 <Grid className="cards">
                     {this.state.data.map(book =>(
                         <Cell key={book.id} col={6} phone={4} tablet={4}>
-                            <Card className={`book book-${book.id}`} shadow={0} style={{width: '320px', height: '320px', margin: 'auto'}}>
-                                <CardTitle expand style={{color: '#fff', background: '#46B6AC'}}>{book.name}</CardTitle>
+                            <Card className={`book book-${book.id}`} shadow={0}>
+                                <CardTitle expand style={{}}>{book.name}</CardTitle>
                                 <CardText>
                                     {book.author} <br/>
                                     Рейтинг: {book.rating}
                                 </CardText>
                                 <CardActions border>
                                     <Button colored>Оставить отзыв</Button>
-                                    <div className="feedback">
+                                    <div className="comments">
 
                                     </div>
                                 </CardActions>
