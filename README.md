@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Тестовое задание Мегафон
+Необходимо реализовать web-приложение (желательно одностраничное).
 
-## Available Scripts
+На сайте в шапке разместить ссылки:
+- Книги;
+- Авторы;
+- Профиль;
+- Кнопка "Войти/Выйти".
 
-In the project directory, you can run:
+Если пользователь кликает на кнопку "Войти" или страницу профиля (и он не авторизован), показывать форму ввода логина и пароля.
 
-### `npm start`
+Форма вхожа принимает данные:
+- логин: Admin
+- пароль: 123
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Если введены другие данные, показывается сообщение, что введены некорректные данные.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Если данные введены корректно, показывается рофиль пользователя.
 
-### `npm test`
+Кнопка "Войти/Выйти" меняет свое состояние. Если пользователь уже залогинился "Выйти", если нет - "Войти".
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+На странице книги показывать список книг.
+Должен быть элемент для возможности сортировки книг по:
+- Названию;
+- Автору;
+- Популярности.
 
-### `npm run build`
+Для авторизованного пользователя должна быть возможность оставить комментарий по книге.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+На странице автора содержится элемент поиска по автору.
+При поиске автора показывать все книги автора.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Данные по книгам и авторам можно хранить где угодно:
+- в коде;
+- в файле.
+Использовать back-end не нужно.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Весь текст должен быть сверстан с подключенным шрифтом. Шрифт подключать при помощи CSS-свойства @font-face. Подключение должно быть кросс-браузерным.
