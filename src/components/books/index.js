@@ -11,6 +11,8 @@ class Books extends Component {
             term: '',
             active: 0
         };
+
+        this.updateData = this.updateData.bind(this)
     }
 
     updateData(config) {
@@ -21,7 +23,7 @@ class Books extends Component {
         return (
             <div>
                 <h1>Книги</h1>
-                <SortBar initialData={DataSet} data={this.state.data} update={this.updateData.bind(this)} />
+                <SortBar initialData={DataSet} data={this.state.data} update={this.updateData} />
                 <Grid className="cards">
                     {this.state.data.map(book =>(
                         <Cell key={book.id} col={6} phone={4} tablet={4}>
