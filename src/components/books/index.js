@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton, Grid, Cell} from 'react-mdl';
-import DataSet from '../../data.json'
+import {Card, CardTitle, CardText, CardActions, Button, Grid, Cell} from 'react-mdl';
+import DataSet from '../../data.json';
 import SortBar from "../utils/SortBar";
 
 class Books extends Component {
@@ -9,7 +9,8 @@ class Books extends Component {
         this.state = {
             data: DataSet,
             term: '',
-            active: 0
+            active: 0,
+            comments: []
         };
 
         this.updateData = this.updateData.bind(this)

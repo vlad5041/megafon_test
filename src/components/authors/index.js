@@ -9,7 +9,8 @@ class Authors extends Component {
         this.state = {
             data: DataSet,
             term: '',
-            active: 0
+            active: 0,
+            comments: []
         };
     }
 
@@ -28,7 +29,7 @@ class Authors extends Component {
                 />
                 <Grid className="cards">
                     {this.state.data.map(book =>(
-                        <Cell col={6} phone={4} tablet={4}>
+                        <Cell key={book.id} col={6} phone={4} tablet={4}>
                             <Card className={`book book-${book.id}`} shadow={0}>
                                 <CardTitle expand>{book.name}</CardTitle>
                                 <CardText>
@@ -37,7 +38,7 @@ class Authors extends Component {
                                 </CardText>
                                 <CardActions border>
                                     <Button colored>Оставить отзыв</Button>
-                                    <div className="feedback">
+                                    <div className="comments">
 
                                     </div>
                                 </CardActions>
