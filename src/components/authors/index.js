@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Card, CardTitle, CardText, CardActions, Button, Grid, Cell} from 'react-mdl';
 import DataSet from '../../data.json';
 import SearchBar from "../utils/SearchBar";
+import BooksList from "../utils/BooksList";
 
 class Authors extends Component {
     constructor(props) {
@@ -27,25 +27,7 @@ class Authors extends Component {
                     data={DataSet}
                     update={this.updateData.bind(this)}
                 />
-                <Grid className="cards">
-                    {this.state.data.map(book =>(
-                        <Cell key={book.id} col={6} phone={4} tablet={4}>
-                            <Card className={`book book-${book.id}`} shadow={0}>
-                                <CardTitle expand>{book.name}</CardTitle>
-                                <CardText>
-                                    {book.author} <br/>
-                                    Рейтинг: {book.rating}
-                                </CardText>
-                                <CardActions border>
-                                    <Button colored>Оставить отзыв</Button>
-                                    <div className="comments">
-
-                                    </div>
-                                </CardActions>
-                            </Card>
-                        </Cell>
-                    ))};
-                </Grid>
+                <BooksList data={DataSet}/>
             </div>
         );
     }
