@@ -25,7 +25,7 @@ class Books extends Component {
             <div>
                 <h1>Книги</h1>
                 <SortBar initialData={DataSet} data={this.state.data} update={this.updateData} />
-                <BooksList data={DataSet}/>
+                <BooksList data={this.state.data}/>
             </div>
         );
     }

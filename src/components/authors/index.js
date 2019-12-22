@@ -27,7 +27,7 @@ class Authors extends Component {
                     data={DataSet}
                     update={this.updateData.bind(this)}
                 />
-                <BooksList data={DataSet}/>
+                <BooksList data={this.state.data}/>
             </div>
         );
     }
