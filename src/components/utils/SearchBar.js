@@ -22,11 +22,10 @@ export default ({ term, data, update }) => {
                 value={term}
                 type="text"
                 className="form-control"
-                placeholder="Поиск по автору..."
                 onChange={dataSearch}
-                label="Expandable Input"
-                expandable
-                expandableIcon="search"
+                label="Поиск по автору..."
+                floatingLabel
+                style={{width: '200px'}}
             />
         </div>
     );
