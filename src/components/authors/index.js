@@ -9,7 +9,6 @@ class Authors extends Component {
         this.state = {
             data: DataSet,
             term: '',
-            active: 0,
             comments: []
         };
     }
@@ -27,7 +26,9 @@ class Authors extends Component {
                     data={DataSet}
                     update={this.updateData.bind(this)}
                 />
-                <BooksList data={this.state.data}/>
+                {
+                    this.state.data.length ? <BooksList data={this.state.data} canWriteComment={this.props.canWriteComment}/> : <div><h2>Книг с таким автором не найдено</h2></div>
+                }
             </div>
         );
     }

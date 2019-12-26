@@ -10,33 +10,31 @@ class BooksList extends Component {
     }
 
     render() {
-        if (!this.props.data) {
-            return <div><h2>Книг с таким автором не найдено</h2></div>
-        } else {
-            return (
-                <div>
-                    <Grid className="cards">
-                        {this.props.data.map(book =>(
-                            <Cell key={book.id} col={6} phone={4} tablet={4}>
-                                <Card className={`book book-${book.id}`} shadow={0}>
-                                    <CardTitle expand>{book.name}</CardTitle>
-                                    <CardText>
-                                        {book.author} <br/>
-                                        Рейтинг: {book.rating}
-                                    </CardText>
-                                    <CardActions border>
-                                        <Button colored>Оставить отзыв</Button>
-                                        <div className="comments">
+        return (
+            <div>
+                <Grid className="cards">
+                    {this.props.data.map(book =>(
+                        <Cell key={book.id} col={6} phone={4} tablet={4}>
+                            <Card className={`book book-${book.id}`} shadow={0}>
+                                <CardTitle expand>{book.name}</CardTitle>
+                                <CardText>
+                                    {book.author} <br/>
+                                    Рейтинг: {book.rating}
+                                </CardText>
+                                <CardActions border>
+                                    {
+                                        this.props.canWriteComment && <Button colored>Оставить отзыв</Button>
+                                    }
+                                    <div className="comments">
 
-                                        </div>
-                                    </CardActions>
-                                </Card>
-                            </Cell>
-                        ))}
-                    </Grid>
-                </div>
-            );
-        }
+                                    </div>
+                                </CardActions>
+                            </Card>
+                        </Cell>
+                    ))}
+                </Grid>
+            </div>
+        );
     }
 }
 

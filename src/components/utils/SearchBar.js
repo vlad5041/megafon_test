@@ -4,14 +4,13 @@ import {Textfield} from 'react-mdl';
 export default ({ term, data, update }) => {
 
     const dataSearch = e => {
-        const value = e.target.value.toLowerCase();
+        const value = e.target.value;
 
         const filter = data.filter(book => {
-            return book.author.toLowerCase().includes(value);
+            return book.author.toLowerCase().includes(value.toLowerCase());
         });
         update({
             data: filter,
-            active: 0,
             term: value
         });
     };
@@ -26,6 +25,7 @@ export default ({ term, data, update }) => {
                 label="Поиск по автору..."
                 floatingLabel
                 style={{width: '200px'}}
+                autoComplete="false"
             />
         </div>
     );

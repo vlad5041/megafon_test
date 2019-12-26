@@ -4,6 +4,7 @@ import {Layout, Header, Drawer, Navigation, Cell, Button, Content} from "react-m
 import Books from "../books";
 import Authors from "../authors";
 import Profile from "../profile";
+import Modal from "./modal";
 
 class MainComponent extends Component {
     constructor(props) {
@@ -11,41 +12,90 @@ class MainComponent extends Component {
         this.state = {
             data: null,
             term: '',
-            active: 0
+            active: 0,
+            isAuth: false,
+            openDialog: false,
         };
+
+        this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
+        this.handleCloseLoginDialog = this.handleCloseLoginDialog.bind(this);
+        this.handleOpenLoginDialog = this.handleOpenLoginDialog.bind(this);
     }
 
-    exit() {
-        localStorage.clear();
-        return (<Redirect to="/"/>);
+    logout() {
+        localStorage.removeItem('isAuth');
+        this.setState({isAuth: false});
+    }
+
+    login(username, pass) {
+        if (username && pass) {
+            if (username === 'Admin' && pass === '123') {
+                localStorage.setItem('isAuth', true);
+                this.redirectTo= '/profile';
+                this.setState({isAuth: true, openDialog: false}, () => {
+                    this.redirectTo = '';
+                });
+            } else {
+                alert('Введены некорректные логин или пароль');
+            }
+        } else {
+            alert('Вам необходимо ввести логин и пароль');
+        }
+    }
+
+    handleCloseLoginDialog() {
+        this.setState({openDialog: false});
+    }
+
+    handleOpenLoginDialog() {
+        this.setState({openDialog: true});
     }
 
     render() {
         return (
             <div>
+                {
+                    this.redirectTo && <Redirect to={this.redirectTo}/>
+                }
                 <Layout fixedHeader fixedDrawer>
                     <Header title="Личный кабинет">
                         <Navigation>
-                            <Link to="/books/">Книги</Link>
-                            <Link to="/authors/">Авторы</Link>
-                            <Link to="/profile/">Профиль</Link>
+                            <Link to="/books">Книги</Link>
+                            <Link to="/authors">Авторы</Link>
+                            {
+                                this.state.isAuth && <Link to="/profile">Профиль</Link>
+                            }
                         </Navigation>
-                        <Cell hidePhone col={1}><Button raised accent ripple onClick={this.exit}>Выйти</Button></Cell>
+                        <Cell hidePhone col={1}>
+                            {
+                                this.state.isAuth ? <Button raised accent ripple onClick={this.logout}>Выйти</Button> : <Button raised accent ripple onClick={this.handleOpenLoginDialog}>Войти</Button>
+                            }
+                        </Cell>
                     </Header>
                     <Drawer title="Личный кабинет">
                         <Navigation>
-                            <Link to="/books/">Книги</Link>
-                            <Link to="/authors/">Авторы</Link>
-                            <Link to="/profile/">Профиль</Link>
+                            <Link to="/books">Книги</Link>
+                            <Link to="/authors">Авторы</Link>
+                            {
+                                this.state.isAuth && <Link to="/profile">Профиль</Link>
+                            }
                         </Navigation>
-                        <Cell hideDesktop hideTablet col={2} style={{position: 'absolute', bottom: 0, right: 0}}><Button raised accent ripple onClick={this.exit}>Выйти</Button></Cell>
                     </Drawer>
                     <Content>
                         <Switch>
-                            <Route strict path="/books/" component={Books}/>
-                            <Route strict path="/authors/" component={Authors}/>
-                            <Route strict path="/profile/" component={Profile}/>
+                            <Route path="/books">
+                                <Books canWriteComment={this.state.isAuth}/>
+                            </Route>
+                            <Route path="/authors">
+                                <Authors canWriteComment={this.state.isAuth}/>
+                            </Route>
+                            {
+                                this.state.isAuth && <Route path="/profile" component={Profile}/>
+                            }
+                            <Redirect to="/books"/>
                         </Switch>
+                        <Modal openDialog={this.state.openDialog} onClose={this.handleCloseLoginDialog} onLogin={this.login}/>
                     </Content>
                 </Layout>
             </div>

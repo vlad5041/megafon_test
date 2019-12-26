@@ -24,8 +24,8 @@ class Books extends Component {
         return (
             <div>
                 <h1>Книги</h1>
-                <SortBar initialData={DataSet} data={this.state.data} update={this.updateData} />
-                <BooksList data={this.state.data}/>
+                <SortBar data={this.state.data} update={this.updateData} />
+                <BooksList data={this.state.data} canWriteComment={this.props.canWriteComment}/>
             </div>
         );
     }

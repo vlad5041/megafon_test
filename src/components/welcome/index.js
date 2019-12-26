@@ -15,7 +15,7 @@ class Welcome extends Component {
     }
 
     login() {
-        if (this.state.login && this.state.password) {
+        /*if (this.state.login && this.state.password) {
             if (this.state.login === 'Admin' && this.state.password === '123') {
                 localStorage.setItem('isAuth', true);
                 this.setState({isAuth: true});
@@ -24,7 +24,7 @@ class Welcome extends Component {
             }
         } else {
             alert('Вам необходимо ввести логин и пароль');
-        }
+        }*/
     }
 
     onChange(e) {
