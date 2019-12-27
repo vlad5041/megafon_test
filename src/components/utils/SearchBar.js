@@ -1,18 +1,12 @@
 import React from 'react';
 import {Textfield} from 'react-mdl';
 
-export default ({ term, data, update }) => {
+export default ({ term, onChangeTerm }) => {
 
     const dataSearch = e => {
         const value = e.target.value;
 
-        const filter = data.filter(book => {
-            return book.author.toLowerCase().includes(value.toLowerCase());
-        });
-        update({
-            data: filter,
-            term: value
-        });
+        onChangeTerm(value);
     };
 
     return (

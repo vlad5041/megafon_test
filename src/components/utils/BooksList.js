@@ -2,13 +2,6 @@ import React, {Component} from 'react';
 import {Card, CardTitle, CardText, CardActions, Button, Grid, Cell} from 'react-mdl';
 
 class BooksList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            comments: []
-        };
-    }
-
     render() {
         return (
             <div>
@@ -23,10 +16,16 @@ class BooksList extends Component {
                                 </CardText>
                                 <CardActions border>
                                     {
-                                        this.props.canWriteComment && <Button colored>Оставить отзыв</Button>
+                                        this.props.canWriteComment && <Button colored onClick={() => {
+                                            this.props.addComment(book.id, book.name)
+                                        }
+                                        }>Оставить отзыв</Button>
                                     }
                                     <div className="comments">
-
+                                        { !!book && !!book.comments && !!book.comments.length && 'Комментарии:'}
+                                        {/*in real project commentIndex change to id */}
+                                        {book && book.comments && book.comments.map((comment, commentIndex) => (<div className="comment" key={commentIndex}>{comment}</div>)
+                                        )}
                                     </div>
                                 </CardActions>
                             </Card>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dialog, DialogTitle, DialogContent, DialogActions, Button, Textfield} from "react-mdl";
 
-class Modal extends Component {
+class AuthModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,8 +28,8 @@ class Modal extends Component {
 
     render() {
         return (
-            <Dialog open={this.props.openDialog}>
-                <DialogTitle>Allow data collection?</DialogTitle>
+            <Dialog open={this.props.openAuthDialog}>
+                <DialogTitle>Авторизация</DialogTitle>
                 <DialogContent>
                     <Textfield
                         id="textfield-login"
@@ -61,4 +61,4 @@ class Modal extends Component {
     }
 }
 
-export default Modal;
+export default AuthModal;
